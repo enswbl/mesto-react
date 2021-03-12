@@ -1,12 +1,8 @@
-
-
-
-
 function PopupWithForm(props) {
     return (
 
         <div className={`popup popup-${props.name} ${props.isOpen ? 'popup_opened' : ''}`}>
-            <button type='reset' className='popup__close-button' onClick={props.onClose} />
+            <button type='reset' className='popup__close-button' onClick={props.onClose}/>
 
             <form action='#' method='GET' name='popupContainer'
                   className='popup__container popup__container_avatar' noValidate>

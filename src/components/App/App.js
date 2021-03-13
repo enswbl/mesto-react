@@ -1,13 +1,9 @@
 import React from 'react';
-
-import Header from './Header/Header';
-import Main from './Main/Main';
-import Card from './Card/Card';
-import PopupWithForm from './PopupWithForm/PopupWithForm';
-import ImagePopup from './ImagePopup/ImagePopup';
-import Footer from './Footer/Footer';
-
-import api from '../utils/api.js';
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import ImagePopup from '../ImagePopup/ImagePopup';
+import Footer from '../Footer/Footer';
 
 
 function App() {
@@ -17,10 +13,15 @@ function App() {
     const [editProfileState, setEditProfileState] = React.useState({
         isOpen: false,
     });
-    const [createPlaceState, setCreatePlaceState] = React.useState({
+    const [addPlaceState, setAddPlaceState] = React.useState({
         isOpen: false,
     });
+
+    /*const [removeCardState, setRemoveCardState] = React.useState({isOpen: false});*/
+
     const [selectedCard, setSelectedCard] = React.useState({isOpen: false});
+
+    const [selectedImage, setSelectedImage] = React.useState({title: '', image: ''});
 
     const handleEditAvatarClick = () => {
         setEditAvatarState({isOpen: true});
@@ -31,69 +32,43 @@ function App() {
     };
 
     const handleAddPlaceClick = () => {
-        setCreatePlaceState({isOpen: true});
+        setAddPlaceState({isOpen: true});
     };
 
-    const handleCardClick = () => {
+    /*const handleRemoveCardClick = () => {
+        setRemoveCardState({isOpen: true});
+    };*/
+
+    const handleSelectedCardClick = (item) => {
         setSelectedCard({isOpen: true});
+        setSelectedImage({title: item.title, image: item.src});
     };
 
     const closeAllPopups = () => {
         setEditAvatarState({isOpen: false});
         setEditProfileState({isOpen: false});
-        setCreatePlaceState({isOpen: false});
+        setAddPlaceState({isOpen: false});
+        /*setRemoveCardState({isOpen: false});*/
         setSelectedCard({isOpen: false});
+        setSelectedImage({image: ''})
     };
 
-    const [cards, setCardsState] = React.useState([]);
-
-    React.useEffect(() => {
-        api.getInitialCards().then((response) => {
-            console.log('response', response);
-            const initCards = response.map((item) => {
-                console.log('item', item);
-                return {
-                    id: item._id,
-                    src: item.link,
-                    like: item['likes'],
-                    title: item.name,
-                };
-            });
-            console.log('initCards', initCards);
-            setCardsState(initCards);
-        });
-    }, []);
-
-    //setCardsState([...cards, result])
-
-    /*       <ol>
-          {deeds.map((deed, i) => (
-            <li key={i}>{deed}</li>
-          ))}
-        </ol> */
-
-    return (
-        <div className='page'>
+    return ((
+        <>
             <Header/>
+
             <main className='content'>
                 <Main
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
+                    /*onRemoveCard={handleRemoveCardClick}*/
+                    onSelectedCard={handleSelectedCardClick}
+                    onClose={closeAllPopups}
                 />
 
-                <section className='container'>
-                    {cards.map((item) => (
-                        <Card
-                            key={item.id}
-                            {...item}
-                            onCardClick={handleCardClick}
-                            onClose={closeAllPopups}
-                        />
-                    ))}
-                </section>
-
                 <section className='popups'>
+
                     <PopupWithForm
                         title={'Обновить аватар'}
                         name={'edit-avatar'}
@@ -105,7 +80,7 @@ function App() {
                             placeholder='Ссылка на аватар'
                             name='avatarLinkInput'
                             id='avatar-link-input'
-                            className='popup__input popup__input_new-place popup__input_place-link'
+                            className='popup__input popup__input_add-place popup__input_avatar-link'
                             autoComplete='off'
                             required
                         />
@@ -145,8 +120,8 @@ function App() {
 
                     <PopupWithForm
                         title={'Новое место'}
-                        name={'new-place'}
-                        isOpen={createPlaceState.isOpen}
+                        name={'add-place'}
+                        isOpen={addPlaceState.isOpen}
                         onClose={closeAllPopups}
                     >
                         <input
@@ -154,7 +129,7 @@ function App() {
                             placeholder='Название'
                             name='placeNameInput'
                             id='place-name-input'
-                            className='popup__input popup__input_new-place popup__input_place-name'
+                            className='popup__input popup__input_add-place popup__input_place-name'
                             minLength='2'
                             maxLength='30'
                             autoComplete='off'
@@ -167,22 +142,27 @@ function App() {
                             placeholder='Ссылка на картинку'
                             name='placeLinkInput'
                             id='place-link-input'
-                            className='popup__input popup__input_new-place popup__input_place-link'
+                            className='popup__input popup__input_add-place popup__input_place-link'
                             autoComplete='off'
                             required
                         />
                         <span className='popup__input-error-message place-link-input-error-message'/>
                     </PopupWithForm>
 
-                    {/*             <PopupWithForm title={'Вы уверены?'} name={'remove-card'} isOpen={createPlaceState.isOpen} onClose={closeAllPopups} />
-<button type='submit' className='popup__save-button popup__create-button'>Да</button> */}
+                    {/*                    <PopupWithForm
+                        title={'Вы уверены?'}
+                        name={'remove-card'}
+                        isOpen={removeCardState.isOpen}
+                        onClose={closeAllPopups}>
+                    </PopupWithForm>*/}
 
-                    <ImagePopup card={selectedCard.isOpen}/>
+                    <ImagePopup card={selectedImage} isOpen={selectedCard.isOpen} onClose={closeAllPopups}/>
+
                 </section>
             </main>
             <Footer/>
-        </div>
-    );
+        </>
+    ))
 }
 
 export default App;

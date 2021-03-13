@@ -15,3 +15,28 @@
 .profile__edit-avatar-button:hover {
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+
+  .profile__edit-avatar-button {
+    margin: -176px auto 0;
+    align-self: center;
+  }
+
+}
+
+/*@media (max-width: 540px) {
+
+  .profile__edit-avatar-button {
+    margin: -176px auto 0;
+  }
+
+}*/
+
+@media (max-width: 480px) {
+
+  .profile__edit-avatar-button {
+    margin: -170px auto 0;
+  }
+
+}

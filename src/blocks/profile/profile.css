@@ -4,7 +4,7 @@
 @import url(../profile/__name/profile__name.css);
 @import url(__edit-profile-button/profile__edit-profile-button.css);
 @import url(../profile/__description/profile__description.css);
-@import url(__create-new-place-button/profile__create-new-place-button.css);
+@import url(__add-place-button/profile__add-place-button.css);
 @import url(__edit-avatar-button/profile__edit-avatar-button.css);
 
 .profile {

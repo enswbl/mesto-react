@@ -1,4 +1,4 @@
-@import url(../__input/_new-place/popup__input_new-place.css);
+@import url(_add-place/popup__input_add-place.css);
 
 .popup__input {
   margin: 15px 36px 15px 36px;

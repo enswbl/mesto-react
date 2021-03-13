@@ -12,7 +12,7 @@
 
 @media (max-width: 480px) {
 
-  .popup__input.popup__input_new-place.popup__input-error {
+  .popup__input.popup__input_add-place.popup__input-error {
     margin: 20px 20px 0 20px;
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import whiteLogo from '../../images/white-logo.svg'
 
+
 function Header() {
     return (
         <header className='header'>

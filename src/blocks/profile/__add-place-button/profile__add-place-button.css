@@ -1,4 +1,4 @@
-.profile__create-new-place-button {
+.profile__add-place-button {
   /* width: 150px; */
   min-width: 150px;
   min-height: 50px;
@@ -11,14 +11,14 @@
   background-position: center;
 }
 
-.profile__create-new-place-button:hover {
+.profile__add-place-button:hover {
   background-image: url('../../../images/add-button-active.svg');
   border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 @media (max-width: 768px) {
 
-  .profile__create-new-place-button {
+  .profile__add-place-button {
     margin: 0 auto;
     width: 100%;
   }

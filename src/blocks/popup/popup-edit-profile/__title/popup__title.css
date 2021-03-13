@@ -1,5 +1,3 @@
-@import url(../__title/_new-place/popup__title_new-place.css);
-
 .popup__title {
   /* max-height: 23px; */
   margin: 34px 64px 39px 36px;
@@ -12,7 +10,7 @@
 @media (max-width: 480px) {
 
   .popup__title {
-    margin: 25px 22px 60px;
+    margin: 30px 35px 16px 20px;
     font-weight: 900;
     font-size: 18px;
     line-height: 22px;

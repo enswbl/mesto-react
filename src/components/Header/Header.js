@@ -3,11 +3,11 @@ import whiteLogo from '../../images/white-logo.svg'
 
 
 function Header() {
-    return (
+    return ((
         <header className='header'>
             <img src={whiteLogo} alt='Логотип' className='header__logo'/>
         </header>
-    );
+    ));
 }
 
 export default Header;

@@ -19,21 +19,28 @@ function Main(props) {
                 setUserNameState({name: result.name})
                 setUserDescriptionState({description: result.about})
             })
+            .catch((err) => {
+                console.log("Something is Wrong:", err);
+            });
     }, []);
 
 
     React.useEffect(() => {
-        api.getInitialCards().then((response) => {
-            const initCards = response.map((item) => {
-                return {
-                    id: item._id,
-                    src: item.link,
-                    like: item['likes'],
-                    title: item.name,
-                };
+        api.getInitialCards()
+            .then((response) => {
+                const initCards = response.map((item) => {
+                    return {
+                        id: item._id,
+                        src: item.link,
+                        like: item['likes'],
+                        title: item.name,
+                    };
+                });
+                setCardsState(initCards);
+            })
+            .catch((err) => {
+                console.log("Something is Wrong:", err);
             });
-            setCardsState(initCards);
-        });
     }, []);
 
 
@@ -64,6 +71,7 @@ function Main(props) {
                         {...item}
                         key={item.id}
                         onSelectedCard={props.onSelectedCard}
+                        onRemoveCard={props.onRemoveCard}
                     />
                 ))}
             </section>

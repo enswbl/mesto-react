@@ -5,12 +5,13 @@ function Card(props) {
 
     function handleImageClick() {
         props.onSelectedCard(props);
+
     }
 
     return ((
 
         <div className="card">
-            <button type="submit" className="card__remove-button"/>
+            <button type="submit" className="card__remove-button" onClick={props.onRemoveCard} />
             <img
                 className="card__image"
                 src={props.src} alt={props.title}

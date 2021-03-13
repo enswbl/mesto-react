@@ -17,7 +17,7 @@ function App() {
         isOpen: false,
     });
 
-    /*const [removeCardState, setRemoveCardState] = React.useState({isOpen: false});*/
+    const [removeCardState, setRemoveCardState] = React.useState({isOpen: false});
 
     const [selectedCard, setSelectedCard] = React.useState({isOpen: false});
 
@@ -35,9 +35,9 @@ function App() {
         setAddPlaceState({isOpen: true});
     };
 
-    /*const handleRemoveCardClick = () => {
+    const handleRemoveCardClick = () => {
         setRemoveCardState({isOpen: true});
-    };*/
+    };
 
     const handleSelectedCardClick = (item) => {
         setSelectedCard({isOpen: true});
@@ -48,9 +48,8 @@ function App() {
         setEditAvatarState({isOpen: false});
         setEditProfileState({isOpen: false});
         setAddPlaceState({isOpen: false});
-        /*setRemoveCardState({isOpen: false});*/
+        setRemoveCardState({isOpen: false});
         setSelectedCard({isOpen: false});
-        setSelectedImage({image: ''})
     };
 
     return ((
@@ -62,7 +61,7 @@ function App() {
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
-                    /*onRemoveCard={handleRemoveCardClick}*/
+                    onRemoveCard={handleRemoveCardClick}
                     onSelectedCard={handleSelectedCardClick}
                     onClose={closeAllPopups}
                 />
@@ -74,6 +73,7 @@ function App() {
                         name={'edit-avatar'}
                         isOpen={editAvatarState.isOpen}
                         onClose={closeAllPopups}
+                        buttonText={'Сохранить'}
                     >
                         <input
                             type='url'
@@ -92,6 +92,7 @@ function App() {
                         name={'edit-profile'}
                         isOpen={editProfileState.isOpen}
                         onClose={closeAllPopups}
+                        buttonText={'Сохранить'}
                     >
                         <input
                             type='text'
@@ -123,6 +124,7 @@ function App() {
                         name={'add-place'}
                         isOpen={addPlaceState.isOpen}
                         onClose={closeAllPopups}
+                        buttonText={'Добавить'}
                     >
                         <input
                             type='text'
@@ -149,12 +151,13 @@ function App() {
                         <span className='popup__input-error-message place-link-input-error-message'/>
                     </PopupWithForm>
 
-                    {/*                    <PopupWithForm
+                    <PopupWithForm
                         title={'Вы уверены?'}
                         name={'remove-card'}
                         isOpen={removeCardState.isOpen}
-                        onClose={closeAllPopups}>
-                    </PopupWithForm>*/}
+                        onClose={closeAllPopups}
+                        buttonText={'Да'}
+                    />
 
                     <ImagePopup card={selectedImage} isOpen={selectedCard.isOpen} onClose={closeAllPopups}/>
 

@@ -1,30 +1,30 @@
 import React from "react";
 
 
-function Card(props) {
+function Card({title, image, like, onSelectedCard, onRemoveCard }) {
 
     function handleImageClick() {
-        props.onSelectedCard(props);
+        onSelectedCard({title, image});
 
     }
 
     return ((
 
         <div className="card">
-            <button type="submit" className="card__remove-button" onClick={props.onRemoveCard} />
+            <button type="submit" className="card__remove-button" onClick={onRemoveCard} />
             <img
                 className="card__image"
-                src={props.src} alt={props.title}
+                src={image} alt={title}
                 onClick={handleImageClick}
             />
             <div className="card__panel">
                 <h2 className="card__title">
-                    {props.title}
+                    {title}
                 </h2>
                 <div className="card__like-container">
                     <button type="submit" className="card__like-button"/>
                     <label className="card__like-number">
-                        {props.like.length}
+                        {like.length}
                     </label>
                 </div>
             </div>

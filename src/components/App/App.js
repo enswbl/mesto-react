@@ -41,7 +41,7 @@ function App() {
 
     const handleSelectedCardClick = (item) => {
         setSelectedCard({isOpen: true});
-        setSelectedImage({title: item.title, image: item.src});
+        setSelectedImage({title: item.title, image: item.image});
     };
 
     const closeAllPopups = () => {
@@ -63,7 +63,6 @@ function App() {
                     onAddPlace={handleAddPlaceClick}
                     onRemoveCard={handleRemoveCardClick}
                     onSelectedCard={handleSelectedCardClick}
-                    onClose={closeAllPopups}
                 />
 
                 <section className='popups'>

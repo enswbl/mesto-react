@@ -11,7 +11,7 @@ class Api {
         return result.json();
     }
 
-    getProfile() {
+    getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: "GET",
             headers: {
@@ -29,7 +29,7 @@ class Api {
         }).then((result) => this._checkErrors(result));
     }
 
-    editProfile({name, description}) {
+    editUserInfo({name, description}) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: "PATCH",
             headers: {

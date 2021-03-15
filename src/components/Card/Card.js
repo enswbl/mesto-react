@@ -1,7 +1,17 @@
 import React from "react";
-
+import {CurrentUserContext, CurrentCardContext} from '../../contexts/CurrentContext'
 
 function Card({title, image, like, onSelectedCard, onRemoveCard }) {
+
+    const currentUser = React.useContext(CurrentUserContext);
+    const currentCard = React.useContext(CurrentCardContext);
+
+    const isOwn = currentCard.id === currentUser.id;
+
+    const cardDeleteButtonClassName = (
+        `card__delete-button ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
+    );
+
 
     function handleImageClick() {
         onSelectedCard({title, image});

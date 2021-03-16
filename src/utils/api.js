@@ -29,7 +29,7 @@ class Api {
         }).then((result) => this._checkErrors(result));
     }
 
-    editUserInfo({name, description}) {
+    setUserInfo({name, description}) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: "PATCH",
             headers: {
@@ -43,7 +43,7 @@ class Api {
         }).then((result) => this._checkErrors(result));
     }
 
-    editAvatar(value) {
+    setUserAvatar({avatar}) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: "PATCH",
             headers: {
@@ -51,12 +51,12 @@ class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                avatar: value.avatar
+                avatar: avatar,
             }),
         }).then((result) => this._checkErrors(result));
     }
 
-    sendCard(value) {
+    sendCard({title, image}) {
         return fetch(`${this._baseUrl}/cards`, {
             method: "POST",
             headers: {
@@ -64,8 +64,8 @@ class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: value.title,
-                link: value.image
+                name: title,
+                link: image
             }),
         }).then((result) => this._checkErrors(result));
     }

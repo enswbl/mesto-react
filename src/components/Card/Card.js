@@ -1,27 +1,32 @@
 import React from "react";
-import {CurrentUserContext, CurrentCardContext} from '../../contexts/CurrentContext'
+import {CurrentUserContext} from '../../contexts/CurrentContext'
 
-function Card({title, image, like, onSelectedCard, onRemoveCard }) {
+
+function Card({title, image, like, owner, id, onSelectedCard, onLikeCard, onRemoveCard}) {
 
     const currentUser = React.useContext(CurrentUserContext);
-    const currentCard = React.useContext(CurrentCardContext);
 
-    const isOwn = currentCard.id === currentUser.id;
+    const isOwn = currentUser._id === owner;
 
-    const cardDeleteButtonClassName = (
-        `card__delete-button ${isOwn ? 'card__delete-button_visible' : 'card__delete-button_hidden'}`
-    );
-
+    const isLiked = like.some(i => i._id === currentUser._id);
 
     function handleImageClick() {
         onSelectedCard({title, image});
+    }
 
+    function handleLikeClick() {
+        onLikeCard({like, id});
+    }
+
+    function handleDeleteClick() {
+        onRemoveCard(id);
     }
 
     return ((
 
         <div className="card">
-            <button type="submit" className="card__remove-button" onClick={onRemoveCard} />
+            <button type="submit" className={`card__remove-button ${isOwn ? 'card__remove-button_active' : ''}`}
+                    onClick={handleDeleteClick}/>
             <img
                 className="card__image"
                 src={image} alt={title}
@@ -32,7 +37,8 @@ function Card({title, image, like, onSelectedCard, onRemoveCard }) {
                     {title}
                 </h2>
                 <div className="card__like-container">
-                    <button type="submit" className="card__like-button"/>
+                    <button type="submit" className={`card__like-button ${isLiked ? 'card__like-button_active' : ''}`}
+                            onClick={handleLikeClick}/>
                     <label className="card__like-number">
                         {like.length}
                     </label>

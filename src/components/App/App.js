@@ -103,7 +103,6 @@ function App() {
         !isLiked ?
             api.setLike(id, !isLiked)
                 .then((result) => {
-                    console.log('result SET', result);
                     setCurrentCardsState((state) => state.map((c) => c._id === id ? result : c));
                 })
                 .catch((err) => {
@@ -112,7 +111,6 @@ function App() {
             :
             api.removeLike(id, isLiked)
                 .then((result) => {
-                    console.log('result REMOVE', result);
                     setCurrentCardsState((state) => state.map((c) => c._id === id ? result : c));
                 })
                 .catch((err) => {

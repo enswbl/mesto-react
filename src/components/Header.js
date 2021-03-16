@@ -1,5 +1,5 @@
 import React from 'react';
-import whiteLogo from '../../images/white-logo.svg'
+import whiteLogo from '../images/white-logo.svg'
 
 
 function Header() {

@@ -1,17 +1,17 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Main from '../Main/Main';
+import Header from './Header';
+import Main from './Main';
 /*import PopupWithForm from '../PopupWithForm/PopupWithForm';*/
-import EditAvatarPopup from '../EditAvatarPopup/EditAvatarPopup';
-import EditProfilePopup from '../EditProfilePopup/EditProfilePopup';
-import AddPlacePopup from '../AddPlacePopup/AddPlacePopup';
-import ImagePopup from '../ImagePopup/ImagePopup';
-import ConfirmDeletePopup from '../ConfirmDeletePopup/ConfirmDeletePopup';
-import Footer from '../Footer/Footer';
-import api from '../../utils/api';
+import EditAvatarPopup from './EditAvatarPopup';
+import EditProfilePopup from './EditProfilePopup';
+import AddPlacePopup from './AddPlacePopup';
+import ImagePopup from './ImagePopup';
+import ConfirmDeletePopup from './ConfirmDeletePopup';
+import Footer from './Footer';
+import api from '../utils/api';
 
-import {CurrentUserContext} from '../../contexts/CurrentContext'
-import avatar from "../../images/avatar.jpg";
+import {CurrentUserContext} from '../contexts/CurrentUserContext'
+import avatar from "../images/avatar.jpg";
 
 
 function App() {

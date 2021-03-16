@@ -122,12 +122,11 @@ function App() {
         api.removeCard(cardId)
             .then(() => {
                 setCurrentCardsState(currentCards.filter(item => item._id !== cardId))
+                closeAllPopups();
             })
             .catch((err) => {
                 console.log("Something is Wrong:", err);
             });
-
-        closeAllPopups();
     }
 
     const handleEditAvatarClick = () => {

@@ -4,9 +4,9 @@ import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({onAddPlace, isOpen, onClose}) {
 
-    const [title, setTitleState] = React.useState({});
+    const [title, setTitleState] = React.useState('');
 
-    const [image, setImageState] = React.useState({});
+    const [image, setImageState] = React.useState('');
 
     function handleTitleChange(e) {
         setTitleState(e.target.value);
